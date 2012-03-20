@@ -61,7 +61,7 @@ int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype,
 	*  set to 1 tenth of a second
 	*********************************************************/
 	stimespec.tv_sec = 0;
-	stimespec.tv_nsec = 200000000; 
+	stimespec.tv_nsec = 1000000; 
 	/**********************************************************
 	*  prepend the cmd with for char 255's (don't know why but quake wants them!) 
 	************************************************************/
