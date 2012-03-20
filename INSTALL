@@ -1,0 +1,19 @@
+This should compile on any GNU/Linux system.
+If you have problems or suggestions, or want to 
+contribute, see the README for more info.
+
+INSTALL:
+
+To install to your /usr/local/bin directory
+first become root.
+Then type:
+
+`make install`
+
+To build as a regular user:
+Just type:
+
+`make`
+
+and copy the crcon binary to your desired loc.
+

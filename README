@@ -1,0 +1,93 @@
+
+                         	  C cli rcon app
+                                  (crcon)
+	
+						Copyright 2003, Steve Johnson
+
+                                Version 1.0
+
+---
+http://steve.webninja.com/crcon
+
+This application is distributed under GNU LGPL version 2, which can be
+found in the file  "COPYING".  
+For more info see http://http://www.gnu.org/licenses/licenses.html#TOCGPL
+
+Instructions:
+
+To use first read INSTALL to build it and install it.
+Then run it with no options or --help to see the option, command arg list.
+
+Commands are listed below:
+
+ -h | --help            diplay this message
+ -l | --list            get player list
+ -p password | --password=password  set password
+ -P port | --port=port          default is 27960
+ -t gametype | --type=gametype      default is q3a, type -h gametype 
+                        or --help=gametype for list
+ -v variable | --var=variable   get player variable
+ -b buffersize-kbytes | --buffersize=buffersize-kbytes  defaults to 4k
+
+Supported Game Types:
+		moh = Medal Of Honor
+		sof2 = Soldier Of Fortune
+		q3a = Quake 3 Arena
+		jk2 = Jedi Outcast
+		bf = Battlefield 1942(status port only)
+	note: this may work on others, just play with the settings.
+
+
+Examples:
+
+crcon myserver.net "getstatus"
+
+This will return the status message for a Quake3 server. 
+This is because the default port is 27960(Quakes port).
+
+--
+crcon --password='mypass' --port=20100 myserver.net "kick cheatingplayername"
+crcon --type=sof myserver.net "rcon mypass kick cheatingplayername"
+
+Both of these would kick a player named cheatingplayer from myserver.net running a Soldier of Fortune server(port 20100).
+Notice that the second one uses type instead of port, this will work because the default sof is 20100 
+
+--
+crcon --password='mypass' --type='moh' --port=67777 --list myserver.net
+
+This would return a list of Players currently on a Medal of Honor server configured to run on port 67777, not it's default
+
+--
+crcon --password='mypass' --type='moh' --var='ip' myserver.net 'funkyplayer'
+
+This would return the ip address of the player named funkplayer on a moh server on it's default port.
+
+--
+crcon --type='moh' --buffersize=16 "rcon mypass cvarlist"
+
+This will return a very large list of all variables set on moh server.  
+The default buffer is only 4k, which is sufficient for most return values.
+However, some like a full cvarlist is about 10k, thus setting buffersize to 16 solves the problem.
+
+--
+
+FYI:
+
+Notice the alternating use of --password and just calling "rcon mypass command".
+I did this out of conveinience.  For most commands you can use both methods, but
+there are exceptions(below).
+
+When using --list or --var to get player lists or variables, there is no command section.  Thus
+you have to set your password via --password or -p.
+
+When using the --type and --port options, you can usually just use port or type alone.  However, 
+Medal of Honor buffers it's packets with an extra character, so you MUST user --type='moh' whether
+It's on it's default port or not.
+
+Also, notice the use of the long options ie. --type. You may use the short instead ie. -t.
+
+That's it.
+
+Enjoy!
+Steve Johnson				(steve@webninja.com)
+
