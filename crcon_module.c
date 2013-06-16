@@ -92,7 +92,7 @@ int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype,
 		return -1;
 	}
 
-	bzero(&addr,sizeof(addr_len));
+	bzero(&addr, addr_len);
 
 	/**********************************************************
 	*  fill sockaddr struct with port,server,flags 
