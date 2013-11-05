@@ -38,10 +38,10 @@
 #include <arpa/inet.h>
 #include "crcon.h"
 
-void test(void){
-	int i;
-	i=0;
-}
+//void test(void){
+//	int i;
+//	i=0;
+//}
 int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype, unsigned short int size_result_buf )
 {
 	unsigned char i;
