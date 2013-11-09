@@ -92,7 +92,7 @@ int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype,
 		return -1;
 	}
 
-	bzero(&addr, addr_len);
+	memset(&addr,'\0', addr_len);
 
 	/**********************************************************
 	*  fill sockaddr struct with port,server,flags 
@@ -122,12 +122,12 @@ int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype,
 		perror("send");
 		return -1;
 	}
-	bzero(p_result_buf,size_result_buf);
+	memset(p_result_buf,'\0',size_result_buf);
 	i = 1;
 	//alloccount = 2;
 	bytesleft = size_result_buf;
 	sock_buffer = (char*)malloc(size_result_buf);
-	bzero(sock_buffer, size_result_buf);
+	memset(sock_buffer, '\0',size_result_buf);
 
 	/*************************************************************
 	 This segment needs explaining:
@@ -145,7 +145,7 @@ int crcon  ( char *cmd, char *p_result_buf, char *server, int port, char *gtype,
 		while( read (sock,sock_buffer,( bytesleft - 1 )) > 0 ){
 			buflen = strlen(sock_buffer);
 			strcat(p_result_buf,sock_buffer);
-			bzero(sock_buffer, size_result_buf);
+			memset(sock_buffer,'\0', size_result_buf);
 			bytesleft = bytesleft - buflen;
 			i=1;
 		}

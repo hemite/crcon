@@ -133,7 +133,7 @@ int get_player_list (char *info_list, player_list *plist){
 			free(r);
               		return -1;
 		}
-		bzero(pnode->player_name,SIZE_PLAYER_NAME);
+		memset(pnode->player_name,'\0',SIZE_PLAYER_NAME);
 		pnode->next = NULL;
 		plist->count++;
 		/**********************
@@ -193,7 +193,7 @@ int get_player_list (char *info_list, player_list *plist){
 				*strindex  = '\0';
 			}
 		}
-		bzero(name,SIZE_NAME);
+		memset(name,'\0',SIZE_NAME);
 		for(i=0;i<strlen(cur_pnode->player_name);i++){
 			if(cur_pnode->player_name[i] == '^'){
 				i++;
