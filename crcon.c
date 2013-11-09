@@ -124,7 +124,7 @@ int main ( int argc, char **argv )
 	oOpt[6].has_arg = 1;
 	oOpt[6].flag = NULL;
 	oOpt[6].val = 'b';
-	bzero(&oOpt[6],sizeof(struct option));
+	memset(&oOpt[6],'\0',sizeof(struct option));
 
 	/*******************************************************
 	 * parse options 
@@ -299,7 +299,7 @@ int main ( int argc, char **argv )
 	if(port == 0){
 		port = DEFAULT_PORT;
 	}
-	bzero(ipaddress,sizeof(ipaddress));
+	memset(ipaddress,'\0',sizeof(ipaddress));
 	result_buf = (char*)malloc(size_result_buf);
 	he = gethostbyname(server);
 
@@ -314,7 +314,7 @@ int main ( int argc, char **argv )
 	 * if password set, append rcon <password> to msg, then send message and fill buf with server return string 
 	 *****************************************************/
 	if(password != NULL){
-		bzero(rcon,SIZE_RCON);
+		memset(rcon,'\0',SIZE_RCON);
 		strcpy(rcon,"rcon ");	
 		strcat(rcon,password);
 		strcat(rcon," ");
