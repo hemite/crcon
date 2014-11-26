@@ -36,7 +36,7 @@
 #define _GNU_SOURCE
 #include <getopt.h>
 
-inline void usage (char *prog){
+void usage (char *prog){
 	printf("usage: \n");
 	printf("%s [-p password] [-P port] [-t type] [-b buffersize] server command\n",prog);
 	printf("%s -l [-P port] [-t type] [-b buffersize] server\n",prog);
@@ -51,7 +51,7 @@ inline void usage (char *prog){
 	printf("     -b buffersize-kbytes | --buffersize=buffersize-kbytes  defaults to 4k\n");
 }
 
-inline void gametypes (void){
+void gametypes (void){
 	printf("Tested game types:\n");
 	printf("	q3a - quake3arena (default)\n");
 	printf("	sof2 - soldier of fortune 2(also works with default)\n");
